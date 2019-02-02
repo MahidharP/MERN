@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+
+        </title>
+    </head>
+    <body>
+
+        <h2>Register With Us</h2>
+
+        <form id="registration" action="http://www.google.com">
+            <label for="username"> Username </label>
+            <input type="text" name="username" id="username" /> 
+            <span id="usernameError"></span>
+            <br/>
+
+            <label for="email"> Email </label>
+            <input type="text" name="email" id="email" />
+            <span id="emailError"></span> <br/>
+
+            <label for="password"> Password </label> 
+            <input type="password" name="password" id="password" /> 
+            <span id="passwordError"></span><br/> 
+
+            <input type="submit" value="Register!!!" /> 
+
+        </form>
+
+        <script>
+
+            var validator = {
+                username: false, 
+                email: false, 
+                password: false
+            };
+
+            var formHandle = document.getElementById('registration'); 
+            var usernameHandle = document.getElementById('username');
+            var emailHandle = document.getElementById('email'); 
+            var passwordHandle = document.getElementById('password'); 
+            var usernameErrorHandle = document.getElementById('usernameError');
+            var emailErrorHandle = document.getElementById('emailError'); 
+            var passwordErrorHandle = document.getElementById('passwordError');
+
+            function validateUserName() {
+                if(usernameHandle.value == '') {
+                    validator.username = false; 
+                    usernameErrorHandle.innerText = 'required'
+                } else if(usernameHandle.value.length < 6 ) {
+                    validator.username = false; 
+                    usernameErrorHandle.innerText = 'should be greater than 6 chars'
+                } else {
+                    validator.username = true; 
+                    usernameErrorHandle.innerText = ''; 
+                }
+            }
+
+            formHandle.addEventListener('submit', function(e){
+                console.log('form was submitted'); 
+
+                validateUserName(); 
+
+                if(Object.values(validator).includes(false)){
+                    e.preventDefault(); 
+                }
+                
+            }, false);
+        </script>
+    </body>
+</html>

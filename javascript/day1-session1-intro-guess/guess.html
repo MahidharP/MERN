@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Guess Game
+        </title>
+    </head>
+    <body>
+        <script>
+           var name = prompt('Enter Your Good Name');
+           console.log('Welcome to the guess game ' + name);
+           // camel case -
+           var targetNumber = Math.round(Math.random() * 100);
+           console.log(targetNumber);
+
+           var maxGuesses = 3;
+           var playerGuesses = 0;    // inititalisation
+
+           while (playerGuesses < maxGuesses) { // condition 
+               console.log('Chances left', maxGuesses - playerGuesses);
+               var guess = Number(prompt('Enter the number'));
+               if (guess < targetNumber){
+                   console.log('OOPS!!! You guess was LOW');
+               } else if (guess > targetNumber) {
+                   console.log('OOPS!!! Your Guess was High');
+               }else if (guess === targetNumber) {
+                   console.log('Good Job! ' + name + ' You guessed my number');
+                   break;
+               }
+               playerGuesses++;  // Incrementation
+           }
+
+           if (playerGuesses === maxGuesses) {
+               console.log('Sorry you didn\'t guess my number ' + name + ' My number was ' + targetNumber);
+           }
+        </script>
+    </body>
+</html>

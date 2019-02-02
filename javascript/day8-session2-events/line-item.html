@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            Line Items
+        </title>
+        <body>
+            <h2> Line Items </h2>
+            <table border = "1">
+                <thead>
+                    <tr>
+                        <th> # </th>
+                        <th> Name </th>
+                        <th> Price </th>
+                        <th> Quantity </th>
+                        <th> Total </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id>
+                        <td> 1 </td>
+                        <td> Marker </td>
+                        <td><span id="price">35</span> </td>
+                        <td><button id="down"> - </button><span id="quantity">1</span><button id="up"> + </button></td>
+                        <td><span id="total">35</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <script>
+                var downHandle = document.getElementById('down');
+                var upHandle = document.getElementById('up');
+                var quantityHandle = document.getElementById('quantity');
+                var price = document.getElementById('price');
+                var totalHandle = document.getElementById('total');
+
+                price = price.innerText;
+                total = totalHandle.innerText;
+                quantity = quantityHandle.innerText; // 1
+
+                upHandle.addEventListener('click', function(){
+                    if (quantity >= 0){
+                        quantity++;
+                    }
+                    quantityHandle.innerText = quantity;
+
+                    totalHandle.innerText = quantity * price;
+
+                }, false); 
+
+                  downHandle.addEventListener('click', function(){
+                    if (quantity > 0){
+                        quantity--;
+                    }
+                    quantityHandle.innerText = quantity;
+
+                    totalHandle.innerText = quantity * price;
+
+                }, false);  
+
+            </script>
+        </body>
+    </head>
+</html>

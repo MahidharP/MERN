@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <div id="root">
+
+    </div>
+
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.js"></script>
+
+    <script type="text/babel">
+      const rootHandle = document.getElementById('root');
+      
+      function Child(props) {
+          return (
+              <div>
+                <b> Child Component - {props.name}</b>
+                <p> {props.greetFunc(props.name)}</p>
+              </div>
+          )
+      }
+
+      class Parent extends React.Component {
+          greet(name){
+              console.log('Hello my name is', name)
+          }
+
+          render (){
+              return (
+                <div>
+                    <h2> Parent Component </h2>
+                    {this.greet('Mahidhar')}
+    
+                    <Child name="Mahesh" greetFunc={this.greet} />
+                    <Child name="Mahidhar" greetFunc={this.greet} />
+              </div>
+              )
+          }
+      }
+
+
+      ReactDOM.render(<Parent />, rootHandle);
+
+    </script>
+  </body>
+</html>

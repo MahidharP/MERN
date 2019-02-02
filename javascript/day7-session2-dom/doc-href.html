@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title> A Href </title>
+    </head>
+    <body>
+        <div id ="root">
+
+        </div>
+
+        <script>
+            var rootHandle = document.getElementById('root');
+            var a = document.createElement('a'); // <a></a>
+            var text = document.createTextNode('DCT Academy'); //DCT ACADEMY
+
+            var href = document.createAttribute('href');
+            href.value = 'https://www.dctacademy.com';
+
+            var target = document.createAttribute('target');
+            target.value = "_blank";
+
+            a.setAttributeNode(href);
+            a.setAttributeNode(target);
+
+            a.appendChild(text);
+
+            rootHandle.appendChild(a);
+
+            // React.createElement('a', {href: 'http://www.dctacademy.com', target:})
+        </script>
+    </body>
+</html>

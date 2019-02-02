@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title> Determine Distance</title>
+
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+
+    <body>
+        <div id="root">
+            <h2> Determine distance between 2 places</h2>
+
+            <form action="", id="myForm">
+                <label for="source">Source</label>
+                <input type="text", name="source", id="source" /> <br/>
+
+                <label for="destination">Destination</label>
+                <input type="text", name="destination", id="destination"><br/>
+
+                <input type="submit", value="find distance">
+            </form>
+
+            <h2> Output </h2>
+            <div id="result">
+
+            </div>
+        </div>
+
+        <script>
+            var myFormHandle = document.getElementById('myForm');
+            var sourceHandle = document.getElementById('source');
+            var destinationHandle = document.getElementById('destination');
+            var resultHandle = document.getElementById('result');
+
+            myFormHandle.addEventListener('submit', function(e){
+                e.preventDefault();
+                
+                var img = document.createElement('img');
+                img.setAttribute('src', 'gif.gif');
+                
+                resultHandle.appendChild(img)
+
+
+                var url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${sourceHandle.value}&destinations=${destinationHandle.value}&departure_time=now&key=AIzaSyA9ucRErmbgXAaCr976KtcW3MKV0QI7HyA`;
+
+                axios.get(url).then(function(response){
+                
+                // resultHandle.innerText = 'Please wait While We Fetch Data For You'
+
+                resultHandle.innerText = `The distance between ${sourceHandle.value} and ${destinationHandle.value} is ${response.data.rows[0].elements[0].distance.text} and it takes ${response.data.rows[0].elements[0].duration.text}`
+                myFormHandle.reset();
+            }).catch(function(err){
+                console.log(err);
+            })
+            }, false)
+        </script>
+    </body>
+</html>

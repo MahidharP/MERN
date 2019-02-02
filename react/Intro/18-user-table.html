@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <div id="root">
+
+    </div>
+
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.js"></script>
+
+    <script type="text/babel">
+      const rootHandle = document.getElementById('root');
+
+      function App(props) {
+          const { users } = props
+          return (
+              <div>
+                <h2> Listing users - {users.length} </h2>
+                <UserTable users={users} />  
+              </div>
+          )
+      }
+
+      function UserTable(props) {
+          const { users } = props
+          return (
+              <table border="1">
+                <thead>
+                    <tr>
+                        <th> # </th>
+                        <th> Name </th>
+                        <th> Email </th>    
+                    </tr>
+                </thead>
+                <tbody>
+                    { users.map(function(user){
+                        return < UserRow id={user.id} name={user.name} email={user.email} key={user.id} />
+                    })}    
+                </tbody> 
+              </table>
+          )
+      }
+
+      function UserRow(props) {
+        const { id, name, email } = props   
+        return (
+            <tr>
+                <td> {id} </td>
+                <td> {name} </td>
+                <td> {email} </td>  
+            </tr>
+        )
+      }
+      
+    ReactDOM.render(<App users={[
+        { id: 1, name: 'Ravi', email: 'ravi@gmail.com'},
+        { id: 2, name: 'Gokul', email: 'gokul@gmail.com'}
+    ]} />, rootHandle)
+
+
+    </script>
+  </body>
+</html>

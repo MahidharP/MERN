@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <div id="root">
+
+    </div>
+
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.js"></script>
+
+    <script type="text/babel">
+      const rootHandle = document.getElementById('root');
+      
+      class Parent extends React.Component {
+          constructor(props) {
+              super(props)
+              this.state = {
+                  children: [
+                      { id: 1, name: "Sumanth"},
+                      { id: 2, name: "Mahesh"},
+                      { id: 3, name: "Suhasini"},
+                      { id: 4, name: "Suhas"}
+                  ]
+              }
+              this.handleRemove = this.handleRemove.bind(this);
+          }
+
+          handleGreet(name) {
+              console.log('Hello My Name is', name);
+          }
+
+          handleRemove(id) {
+              console.log('Handle Remove', id)
+              this.setState(function(prevState){
+                  return  {
+                  children: prevState.children.filter(child => {
+                      return child.id != id
+                  })
+                }
+              })
+          }
+
+          render() {
+            return (
+              <div>
+                <h2> Parent Component </h2>
+                {this.state.children.map((child) => {
+                    return <Child name={child.name} key={child.id} id={child.id} handleGreet={this.handleGreet} handleRemove={this.handleRemove} />
+                })}
+              </div>
+          )
+        }
+      }
+
+      function Child(props) {
+          return (
+              <div>
+                <b> Child Component - {props.name} </b>
+                {props.handleGreet(props.name)}
+                <button onClick={() => {
+                    props.handleRemove(props.id)
+                }}> Remove </button>
+              </div>
+          )
+      }
+
+      ReactDOM.render(<Parent />, rootHandle)
+    </script>
+  </body>
+</html>

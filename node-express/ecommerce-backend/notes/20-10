@@ -1,0 +1,13 @@
+1.) create folders
+    /app
+    /app/controllers
+    /app/models
+    /app/views
+    /app/middlewares
+    /config //create files inside this 
+        /config/db.js
+        /config/routes.js
+
+2.) create app/models/book.js
+3.) create app/controllers/book_controller.js
+4.) create app/config/routes.js

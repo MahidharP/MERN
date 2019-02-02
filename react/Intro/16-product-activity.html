@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <div id="root">
+
+    </div>
+
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.js"></script>
+
+    <script type="text/babel">
+      const rootHandle = document.getElementById('root');
+      
+        function Product(props) {
+            return (
+                <div>
+                    <p> Name: {props.name} </p>
+                    <p> Price: INR {props.price} </p>
+                    <p> Description: {props.description} </p>
+                </div>
+            )
+        }
+    
+      function App() {
+          return (
+        <div>
+            <h2> Product List </h2>
+            <Product name="Levis" price="1799" description="Strachable fit" />
+            <Product name="Peter England" price="1199" description="Strachable Slim fit" />
+        </div>
+    )
+    }
+    ReactDOM.render(App(), rootHandle);
+    </script>
+  </body>
+</html>

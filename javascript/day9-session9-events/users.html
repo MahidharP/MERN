@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AJAX request</title>
+  </head>
+  <body>
+      <button id = 'btn'>fetch data</button>
+    <div id='root'>
+        <h2>Listing Users <span id="count"></span></h2>
+
+        <input type="text", placeholder="search..." id="search">
+    </div>
+    
+    <script>
+      var rootHandle = document.getElementById('root');
+      var ul = document.createElement('ul');
+      var searchHandle = document.getElementById('search');
+      var countHandle = document.getElementById('count');
+      var users;
+
+      function listUsers(users){
+          countHandle.innerHTML = users.length;
+        users.forEach(function(user){
+              var li = document.createElement('li')
+              var text = document.createTextNode(user.name)
+              li.appendChild(text);
+              ul.appendChild(li);
+            });
+            rootHandle.appendChild(ul)
+      }
+      function fetchdate(){
+        var xhr = new XMLHttpRequest();
+        console.dir(xhr);
+        xhr.open('GET', 'http://jsonplaceholder.typicode.com/users');
+        xhr.send();
+        xhr.onreadystatechange = function(){
+          if (xhr.readyState == 4 && xhr.status === 200){
+            users = JSON.parse(xhr.responseText);
+            listUsers(users);
+          }
+        };
+      };
+      document.getElementById('btn').addEventListener('click', function(){
+        ul.innerHTML = '';
+        fetchdate();
+      }, false)
+      
+      searchHandle.addEventListener('keyup', function(){
+          var people = users.filter(function(user){
+              return user.name.indexOf(searchHandle.value) >= 0;
+          });
+
+          ul.innerHTML = '';
+          listUsers(people);
+      }, false);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        
+        <script src="js/react.development.js"></script>
+        <script src="js/react-dom.development.js"></script>
+        <script src="js/babel.js"></script>
+
+        <script type="text/babel">
+            const rootHandle = document.getElementById('root');
+            const name = "Mahidhar"
+                const age = 24
+                const skills = ['js', 'rb', 'py']
+                const address = {
+                    city: 'bangalore',
+                    state: 'karnataka'
+                }
+            const ele = (
+                <div>
+                    <h2> My Name is {name} </h2>
+                    <h2> I'm {age} years old </h2>
+                    <ul>
+                        <li>{ skills[0]}</li>
+                        <li>{ skills[1]}</li>
+                        <li>{ skills[2]}</li>
+                    </ul>
+                    <p> Currently live in {address.city}</p>
+                </div>
+            )
+
+            ReactDOM.render(ele, rootHandle);
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+

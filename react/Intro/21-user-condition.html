@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <div id="root">
+
+    </div>
+
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.js"></script>
+
+    <script type="text/babel">
+      const rootHandle = document.getElementById('root');
+      
+      function AddProduct() {
+          return (
+              <div> 
+                <h2> Add Product </h2>
+                <form> 
+                    <input type="text" placeholder="product name" />
+                </form>
+              </div> 
+          )
+      }
+
+      function App() {
+          const user = {
+              firstName: 'ravi',
+              isAdmin: true
+          }
+          return (
+              <div> 
+                <h2> Listing Products </h2>
+                <ul>
+                    <li> Pencil </li>
+                    <li> Marker </li>
+                </ul>
+
+                { user.isAdmin && <AddProduct />}
+              </div>
+          )
+      }
+
+      ReactDOM.render(<App />, rootHandle)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <div id="root">
+
+    </div>
+
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.js"></script>
+
+    <script type="text/babel">
+      const rootHandle = document.getElementById('root');
+      
+      function Header(props) {
+          return (
+              <div>
+                <h2> { props.title } </h2>
+                <p> { props.body } </p>
+              </div>
+          )
+      }
+
+      function Services(props) {
+          return (
+            <div>
+                <h2> { props.title } </h2>
+                <ul>
+                    {props.services.map(function(service, index) {
+                        return <li key="index"> { service } </li>
+                    })}
+                </ul>
+              </div>
+          )
+      }
+
+
+      function Portfolio(props) {
+          return (
+              <div>
+                <h2> { props.title } </h2>
+                <ul>
+                    {props.portfolios.map((portfolio, index) => <li key="index"> {portfolio} </li> )}
+                </ul>
+              </div>
+          )
+      }
+
+      const ele = (
+          <div>
+                <Header title="Welcome to the Design Studio" body="We are an interior design studio" />
+                <hr/>
+                <Services title="services we offer" services={["Design", "Consulting", "Home Decor"]}/>
+                <hr/>
+                <Portfolio title="Works" portfolios={["Hospitality", "Resort"]} />
+          </div>
+      )
+
+      ReactDOM.render(ele, rootHandle);
+    </script>
+  </body>
+</html>

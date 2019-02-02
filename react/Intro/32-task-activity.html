@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <div id="root">
+
+    </div>
+
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.js"></script>
+
+    <script type="text/babel">
+      const rootHandle = document.getElementById('root');
+      
+      function SingleTask(props) {
+        const {id, name, isCompleted, makeitcomplete, task, handleRemove} = props
+
+        return( 
+          <tr> 
+            <td> {id}</td>
+            <td> {name}</td>
+            <td> <input type="checkbox" onChange={
+              () => {
+                makeitcomplete(task)
+              }
+            }  key={id} defaultChecked={isCompleted ? 'checked' : false} /> </td>
+            <td> <button onClick={
+              () => {
+                handleRemove(id)
+              }
+            }> Remove </button> </td>
+          </tr>
+        )
+      }
+
+
+      class Tasks extends React.Component{
+
+        constructor(props){
+          super(props)
+          this.makeitcomplete = this.makeitcomplete.bind(this)
+          this.handleRemove = this.handleRemove.bind(this)
+          
+          this.state = {
+            tasks: [
+              {id:1 ,name: 'task 1', isCompleted: false}, 
+              {id:2,name: 'task 2', isCompleted: true}, 
+              {id:3 ,name: 'task 3', isCompleted: true}
+            ]
+          }
+        }
+        
+
+        makeitcomplete(task) {
+          task.isCompleted = task.isCompleted ? false : true 
+          
+          this.setState((prevState) => {
+            return {
+              tasks:  [...prevState.tasks] // [].concat(prevState.tasks)
+            }
+          })
+          
+        }
+        
+        handleRemove(id){
+          console.log('removal id', id);
+          // console.log(this.state.children[index]);
+          this.setState((prevState) => {
+            return {
+              tasks: prevState.tasks.filter((task) => {
+                return task.id != id
+              })
+            }
+          })
+          
+        }
+        
+        render(){
+          return (
+            
+            <div>
+              <h2>Listing Tasks = {this.state.tasks.length}</h2>
+              <h2>Completed Tasks = {this.state.tasks.filter(task => {
+                return task.isCompleted
+              }).length}</h2>
+              <h2>In complete Tasks = {this.state.tasks.filter(task => {
+                return !task.isCompleted
+              }).length}</h2>
+              
+              <table border = "1"> 
+                <thead>
+                  <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>Completed</th>
+                    <th>Remove</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {
+                    this.state.tasks.map(task => {
+                      return(
+                        <SingleTask id={task.id} task={task} name={task.name} isCompleted={task.isCompleted} key={task.id} makeitcomplete={this.makeitcomplete} handleRemove={this.handleRemove}/> 
+                      )
+                    })
+                  }
+                </tbody>
+              </table>
+
+            </div>
+          )
+        }
+      } 
+
+      ReactDOM.render(<Tasks />, rootHandle)
+    </script>
+  </body>
+</html>

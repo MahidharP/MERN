@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title> Task List </title>
+    </head>
+    <body>
+        <h1> Listing Tasks </h1>
+        <progress id="bar" max="100" value="57"></progress>
+        <p> Here is the list of all the tasks that are to be completed</p>
+        <ul>
+            <li>Go for a walk</li>
+            <li>Watch a movie</li>
+        </ul>
+        <h2>Completed Tasks</h2>
+        <ol>
+            <li><s>Take the dog for walk</s></li>
+        </ol>
+        <table border = "2">
+            <thead>
+                <tr>
+                    <th> Sl </th>
+                    <th> Name </th>
+                    <th> Link </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> 1 </td>
+                    <td> Facebook </td>
+                    <td> <a href="https://www.facebook.com" target="_blank">Facebook</a> </td>
+                </tr>
+                <tr>
+                    <td> 1 </td>
+                    <td> gmail </td>
+                    <td> <a href="https://www.gmail.com" target="_blank">Gmail</a> </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Contact Form</h2>
+        <form action="">
+
+            <label for="first_name">First Name</label> <br/>
+            <input type="text" name="first_name" autofocus id="first_name"/> <br>
+
+            <label for="last_name">Last Name</label> <br/>
+            <input type="text" name="last_name" id="last_name" /> <br/>
+
+            <label for="mobile">Mobile Number</label><br/>
+            <input type="number" name="mobile" id="mobile"/><br/>
+
+            <label for="dob">Date Of Birth</label> <br/>
+            <input type="date" name="dob" id="dob"><br/>
+
+            <label for="password">Password</label><br/>
+            <input type="password" name="password" id="password"><br>
+
+            <label for="email">Email</label><br>
+            <input type="email" name="email", id="email"><br>
+
+            <label for="message">Message</label><br>
+            <textarea id="message" name="message"></textarea><br>
+
+            <label for="background">Background</label><br>
+            <select name="background" id="">
+                <option value="">Select</option>
+                <option value="employee">Employee</option>
+                <option value="student">Student</option>
+                <option value="freelancer">Free Lancer</option>
+            </select><br/>
+
+            <label> Gender </label><br>
+            <input type="radio" id="male" name="gender" checked />
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" />
+            <label for="female">Female</label><br>
+
+            <input type="checkbox" name="tnc" id="tnc">
+            <label for="tnc">I Accept</label><br>
+
+            <label for="slider">Slider</label>
+            <input type="range" min="1" max="100">
+        </form>
+    </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <div id="root">
+
+    </div>
+
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.js"></script>
+
+    <script type="text/babel">
+      const rootHandle = document.getElementById('root');
+      
+    function App() {
+       const article = {id: 1, title: 'The Monk Who sold his ferrari', author: 'Robin Sharma', body: 'Its about a life of rich person turned as monk', createdAt: 'Dec 2018', tags: ['novel'], comments: [
+        { id: 1, title: 'Good book', body: 'Very nice book'},
+        { id: 2, title: 'Excellent', body: 'Very Good'}]}
+
+        return (
+            <div>
+                <h2> {article.title} </h2>
+                <p> {article.author} </p>
+                < ArticleComponent title={article.title} body={article.body} author={article.author} tags={article.tags} />
+                < CommentsComponent comments={article.comments} />
+            </div>
+        )
+    }
+
+    function ArticleComponent(props) {
+        const { id, title, body, author, tags } = props
+        return (
+            <div>
+                <p> {id} </p>
+                <h2> {title} </h2>
+                <i> {author} </i>
+                <p> {body} </p>
+                <p> {tags.join(', ')} </p> 
+            </div>
+        )
+    }
+
+    function CommentsComponent(props) {
+        const { comments } = props 
+        return (
+            <h2> Total Comments: {comments.length} </h2>
+            {comments.map(function(comment, index){
+                return < SingleCommentComponent key={index} title={ comment.title } body={comment.body} />
+            })}
+        )
+    }
+
+    ReactDOM.render(<App />, rootHandle)
+    </script>
+  </body>
+</html>

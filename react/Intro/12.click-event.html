@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <div id="root">
+
+    </div>
+
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.js"></script>
+
+    <script type="text/babel">
+      const rootHandle = document.getElementById('root');
+      
+      let count = 0;
+      let stepBy2 = 0;
+
+      function handleClick(){
+          count++;
+          stepBy2 = count*2;
+          ele = displayElement()
+          ReactDOM.render(ele, rootHandle);
+      }
+
+      function handleDec(){
+          count--;
+          stepBy2 = count/2;
+          ele = displayElementDec()
+          ReactDOM.render(ele, rootHandle)
+      }
+
+      function displayElementDec(){
+          return (
+            <div> 
+                <h2> The count is { count} / {stepBy2} </h2>  
+                <button onClick={handleClick}> - </button>
+              </div>  
+          )
+      }
+
+      function displayElement(){
+          return (
+              <div> 
+                <h2> The count is { count} / {stepBy2} </h2>  
+                <button onClick={handleClick}> + </button>
+              </div>
+          )
+      }
+      
+      let ele = displayElement()
+      ReactDOM.render(ele, rootHandle)
+    </script>
+  </body>
+</html>

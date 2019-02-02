@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <div id="root">
+
+    </div>
+
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.js"></script>
+
+    <script type="text/babel">
+      const rootHandle = document.getElementById('root');
+      
+      class ProductList extends React.Component {
+          constructor(props) {
+              console.log('Im inside the constructor')
+              super(props)
+              // Initial state should be set inside the constructor
+              this.state = {
+                  products: [
+                      { id: 1, name: 'marker', price: 15 },
+                      { id: 2, name: 'scale', price: 10}
+                  ]
+              }
+          }
+
+          render(){
+              console.log('Im inside the render')
+              return(
+                  <div>
+                    <h2> Listing products - {this.state.products.length} </h2>
+                    <ol>
+                        {this.state.products.map(product => {
+                            return <li key={product.id}> {product.name} -  {product.price} </li>
+                        })}
+                    </ol>
+                  </div>
+              )
+          }
+      }
+
+      ReactDOM.render(<ProductList />, rootHandle)
+    </script>
+  </body>
+</html>

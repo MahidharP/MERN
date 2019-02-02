@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Listing Items </title>
+    </head>
+    <body>
+        <div id = "root">
+            <h2> Listing Fruits - <span id='count'></span> </h2>
+            <ul id ="list">
+
+
+            </ul>
+            <h2> Listing Social Links - <span id='linkCount'></span></h2>
+            <ol id ="order">
+
+            </ol>
+        </div>
+        <script>
+            var fruits = ['apple', 'watermelon', 'mango', 'strwaberry'];
+            var countHandle = document.getElementById('count');
+            var listHandle = document.getElementById('list');
+            countHandle.innerText = fruits.length;
+
+            // we are looping over the fruits array and building each li to be appended to the ul on the webpage
+            fruits.sort().forEach(function(fruit){
+                var li = document.createElement('li');
+                var text = document.createTextNode(fruit);
+                li.appendChild(text);
+                listHandle.appendChild(li);
+            });
+
+             var links = [{ website: 'facebook', link: 'http://www.facebook.com'}, {website: 'github', link: 'http://www.github.com'}];
+                var linkCountHandle = document.getElementById('linkCount');
+                var orderHandle = document.getElementById('order');
+                linkCountHandle.innerText = links.length;
+
+                links.forEach(function(link){
+                    var li = document.createElement('li'); // Element node // <li> </li>
+                    var a = document.createElement('a');  // <a> </a>
+                    a.setAttribute('href', link.link);
+                    a.setAttribute('target', '_blank');
+                    var text = document.createTextNode(link.website);
+
+                    a.appendChild(text);
+
+                    li.appendChild(a);
+                    orderHandle.appendChild(li);
+                });
+        </script>
+    </body>
+
+</html>

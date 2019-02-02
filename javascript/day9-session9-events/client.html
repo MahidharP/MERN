@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Dynamic select </title>
+    </head>
+    <body>
+        <h2> Add Task</h2>
+        <form id="task">
+            <label for="">Client</label>
+            <select name="" id="client">
+                <option value="">Select Client</option>
+            </select>
+
+            <label for="">Projects</label>
+            <select name="" id="project">
+                <option value="">select Project</option>
+            </select>
+        </form>
+
+        <script>
+            var clients = [{id: 1, name: 'ABC Enterprises'}, {id: 2, name: 'DEF Limited'}, {id: 3, name: 'XYZ LLP'}];
+
+            var projects = [{id: 1, clientId: 1, name: 'CRM Solution'}, {id: 1, clientId: 1, name: 'Lead Management'}, {id: 3, clientId: 2, name: 'Web Design Camp'}];
+            
+
+            var clientHandle = document.getElementById('client');
+
+            clients.forEach(function(client){
+                var option = document.createElement('option');
+                option.setAttribute('value', client.id);
+
+                var text = document.createTextNode(client.name);
+                option.appendChild(text);
+                clientHandle.appendChild(option);
+            });
+
+            var projectHandle = document.getElementById('project');
+            function changeProject(result){
+                projectHandle.innerText = '';
+                result.forEach(function(res){
+                    var option3 = document.createElement('option');
+                    option3.setAttribute('value', res.id);
+
+                    var text2 = document.createTextNode(res.name);
+                    option3.appendChild(text2);
+                    projectHandle.appendChild(option3);
+                })
+            }
+            clientHandle.addEventListener('change', function(){
+                var result = projects.filter(function(project){
+                    return project.clientId == clientHandle.value;
+                })
+                changeProject(result);
+            }, false)
+        </script>
+    </body>
+</html>

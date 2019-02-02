@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <div id="root">
+
+    </div>
+
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.js"></script>
+
+    <script type="text/babel">
+      const rootHandle = document.getElementById('root');
+      
+      //Function compinent in react 
+      // 1. Function name in capital 
+      //2. function should get arguments 
+      //3. function must return jsx
+      function Greet(props) {
+          return <h2> Hello, {props.name}. My age is {props.age} </h2>
+      }
+
+      const ele = (
+          <div> 
+            <Greet name="Govind" age={21} />
+            <Greet name="Supriya" age={23} />
+            {Greet ({name="Govind", age=22})}
+          </div>
+      )
+
+      ReactDOM.render(ele, rootHandle)
+    </script>
+  </body>
+</html>

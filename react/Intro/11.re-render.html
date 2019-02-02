@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <div id="root">
+
+    </div>
+
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.js"></script>
+
+    <script type="text/babel">
+      const rootHandle = document.getElementById('root');
+      
+      let time = new Date().toString();
+
+      function displayElement(time){
+          return (
+              <div>
+                <h2> Displaying Time </h2>
+                <p> {time} </p>
+              </div>
+          )
+      }
+      let ele = displayElement(time);
+
+      setInterval(() => {
+          let time = new Date().toString();
+          ele = displayElement(time);
+          ReactDOM.render(ele, rootHandle)
+      }, 1000);
+
+      ReactDOM.render(ele, rootHandle)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+npm init -y
+npm install --save express
+create new index.js file 
+
+var express = require('express');
+
+var app = express();
+
+// routers
+
+app.get('/', function(req, res){
+    res.send('Hello World');
+})
+
+app.listen(3000, function(){
+    console.log('Listening to port 3000');
+});
+
+5.) start server- 
+    node index.js
+
+6.)goto browser and open 
+localhost:3000
+
